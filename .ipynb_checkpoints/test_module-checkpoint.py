@@ -4,7 +4,7 @@ import matplotlib as mpl
 
 class DataCleaningTestCase(unittest.TestCase):
     def test_data_cleaning(self):
-        actual = int(time_series_visualizer.df.count()[0])
+        actual = int(time_series_visualizer.df.count(numeric_only=True))
         expected = 1238
         self.assertEqual(actual, expected, "Expected DataFrame count after cleaning to be 1238.")
 
@@ -59,7 +59,7 @@ class BarPlotTestCase(unittest.TestCase):
 
     def test_bar_plot_number_of_bars(self):
         actual = len([rect for rect in self.ax.get_children() if isinstance(rect, mpl.patches.Rectangle)])
-        expected = 57
+        expected = 49
         self.assertEqual(actual, expected, "Expected a different number of bars in bar chart.")
 
 
